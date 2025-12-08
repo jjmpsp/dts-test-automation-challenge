@@ -23,7 +23,7 @@ Be prepared to present your code, explain your design choices, and discuss any c
 Think about potential improvements you would make given additional time to work on the activity. 
 We look forward to receiving your completed Test Automation Framework Activity and discussing your approach during the interview. Best of luck! 
  
-**Activity: Implement Test Automation Framework Objective: **
+**Activity: Implement Test Automation Framework Objective:**
 
 Implement a test automation framework for a simple web application of your choice that tests the login functionality. 
 
