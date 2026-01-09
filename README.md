@@ -23,6 +23,11 @@ This project demonstrates advanced test automation capabilities by implementing 
 - **Reporting**: Mochawesome HTML reports
 - **Frontend**: JavaScript, HTML, CSS
 
+## 🖼️ Application Preview
+
+![Application Screenshot](images/image.png)
+
+
 ## 📁 Project Structure
 
 ```
@@ -131,5 +136,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ```
 
 ---
-
-Made with ❤️ for test automation excellence
+ 
+Made with ❤️ by Joel Murphy
