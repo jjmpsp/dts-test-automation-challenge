@@ -1,6 +1,6 @@
-# Login Lab Test Automation Framework
-
 *All references to personal information have been removed, as per name-blind recruitment policy.*
+
+# Login Lab Test Automation Framework
 
 A comprehensive test automation framework built with Node.js, Selenium WebDriver, and Mocha for validating authentication mechanisms and security controls.
 
