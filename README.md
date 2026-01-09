@@ -66,8 +66,8 @@ The framework consists of multiple interconnected services:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/jjmpsp/dts-test-automation-challenge.git
+cd login-lab-framework
 ```
 
 2. Build and start the services:
