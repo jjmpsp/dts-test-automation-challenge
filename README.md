@@ -1,16 +1,34 @@
 # Login Lab - Test Runner Framework (Node + Selenium + Mochawesome)
 
-Includes:
-- Multiple mock login apps (Basic, CSRF, MFA, Lockout)
-- Mocha test suites using Selenium WebDriver
-- Mochawesome HTML report generated per run
-- Screenshots captured on failure and shown in UI
+This project represents my submission for the DTS (Digital Transformation Service) test automation challenge. It implements a comprehensive test automation framework for various authentication mechanisms and security controls, demonstrating proficiency in test automation frameworks, web application testing, and modern development practices.
+
+
+## Overview
+
+The Login Lab Test Runner Framework is a comprehensive automated testing platform designed to validate various authentication mechanisms and security controls. It includes multiple mock login applications and runs comprehensive test suites using Selenium WebDriver with detailed reporting and screenshot capture capabilities. This project was developed as part of the DTS test automation challenge to demonstrate skills in test automation, framework development, and security testing of web applications.
+
+
+## Key Features
+
+- Multiple mock login applications simulating various authentication scenarios (Basic, CSRF, MFA, Lockout, Session Fixation, Password Policy, Rate Limiting, Account Enumeration)
+- Mocha test suites using Selenium WebDriver for robust UI testing
+- Mochawesome HTML reports generated per test run with detailed results
+- Screenshots captured on test failure and integrated into the UI for debugging
+- Docker containerization for consistent and portable deployment
+- REST API for managing test runs and serving artifacts
+- User-friendly frontend interface for running and viewing test results
+- Comprehensive logging and error handling mechanisms
+
+For detailed technical documentation, see [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md).
+
+For development setup instructions, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
+For future improvement ideas, see [Future-Improvements.md](Future-Improvements.md).
 
 ![Application Screenshot](images/image.png)
 
 ## Ports
 
-## Ports
 - UI: http://localhost:31010
 - API: http://localhost:41010
 - Mock apps:
@@ -18,6 +36,10 @@ Includes:
   - CSRF: http://localhost:51011
   - MFA: http://localhost:51012
   - Lockout: http://localhost:51013
+  - Session Fixation: http://localhost:51014
+  - Password Policy: http://localhost:51015
+  - Rate Limiting: http://localhost:51016
+  - Account Enumeration: http://localhost:51017
 
 ## Run
 ```bash
@@ -29,11 +51,13 @@ Artifacts are served via the API at `/artifacts/...`
 
 ---
 
-# Test Automation Framework Activity - Technical Prerequisites and Submission Guidelines 
+# DTS Test Automation Challenge - Technical Prerequisites and Submission Guidelines
 
-Thank you for your interest in the Senior Software Developer in Test position here at HMCTS.  As part of our interview process. We appreciate your time and effort in completing this activity, which will help us assess your technical skills in test automation. 
+This project was created as part of the Senior Software Developer in Test position application for DTS (Digital Transformation Service). As part of the interview process, this submission demonstrates my technical skills in test automation, framework development, and security testing. The implementation showcases proficiency in programming, test automation frameworks, web application testing, version control, and development environment setup.
 
-In this technical challenge, we would like you to showcase the following: 
+Thank you for your interest in the Senior Software Developer in Test position here at HMCTS.  As part of our interview process. We appreciate your time and effort in completing this activity, which will help us assess your technical skills in test automation.
+
+In this technical challenge, we would like you to showcase the following:
 
 Proficiency in Programming 
 Familiarity with Test Automation Frameworks 
