@@ -1,5 +1,7 @@
 # Login Lab Test Automation Framework
 
+*All references to personal information have been removed, as per name-blind recruitment policy.*
+
 A comprehensive test automation framework built with Node.js, Selenium WebDriver, and Mocha for validating authentication mechanisms and security controls.
 
 ## 🚀 Overview
@@ -135,6 +137,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 └── LICENSE                   # License information
 ```
 
----
- 
-Made with ❤️ by Joel Murphy
