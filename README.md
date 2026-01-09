@@ -1,105 +1,135 @@
-# Login Lab - Test Runner Framework (Node + Selenium + Mochawesome)
+# Login Lab Test Automation Framework
 
-This project represents my submission for the DTS (Digital Transformation Service) test automation challenge. It implements a comprehensive test automation framework for various authentication mechanisms and security controls, demonstrating proficiency in test automation frameworks, web application testing, and modern development practices.
+A comprehensive test automation framework built with Node.js, Selenium WebDriver, and Mocha for validating authentication mechanisms and security controls.
 
+## 🚀 Overview
 
-## Overview
+This project demonstrates advanced test automation capabilities by implementing a modular framework that validates various authentication scenarios including basic authentication, CSRF protection, multi-factor authentication, account lockout, and other security controls. The solution follows modern software engineering principles with containerization, comprehensive reporting, and a user-friendly interface.
 
-The Login Lab Test Runner Framework is a comprehensive automated testing platform designed to validate various authentication mechanisms and security controls. It includes multiple mock login applications and runs comprehensive test suites using Selenium WebDriver with detailed reporting and screenshot capture capabilities. This project was developed as part of the DTS test automation challenge to demonstrate skills in test automation, framework development, and security testing of web applications.
+## ✨ Key Features
 
+- **Multi-Service Architecture**: Microservices-based design with dedicated services for API, frontend, test runner, and mock applications
+- **Comprehensive Test Coverage**: Supports 8+ authentication scenarios with dedicated mock applications
+- **Advanced Reporting**: HTML reports with detailed results and automatic screenshot capture on failures
+- **Containerized Deployment**: Docker and Docker Compose for consistent, reproducible environments
+- **Modern Frontend**: User-friendly interface built with Vite for test execution and result visualization
+- **Extensible Design**: Modular architecture supporting easy addition of new test scenarios
 
-## Key Features
+## 🛠️ Technologies Used
 
-- Multiple mock login applications simulating various authentication scenarios (Basic, CSRF, MFA, Lockout, Session Fixation, Password Policy, Rate Limiting, Account Enumeration)
-- Mocha test suites using Selenium WebDriver for robust UI testing
-- Mochawesome HTML reports generated per test run with detailed results
-- Screenshots captured on test failure and integrated into the UI for debugging
-- Docker containerization for consistent and portable deployment
-- REST API for managing test runs and serving artifacts
-- User-friendly frontend interface for running and viewing test results
-- Comprehensive logging and error handling mechanisms
+- **Backend**: Node.js, Express.js
+- **Testing Framework**: Selenium WebDriver, Mocha, Chai
+- **Build Tools**: Vite, Docker, Docker Compose
+- **Reporting**: Mochawesome HTML reports
+- **Frontend**: JavaScript, HTML, CSS
 
-For detailed technical documentation, see [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md).
+## 📁 Project Structure
 
-For development setup instructions, see [DEVELOPMENT.md](DEVELOPMENT.md).
-
-For future improvement ideas, see [Future-Improvements.md](Future-Improvements.md).
-
-![Application Screenshot](images/image.png)
-
-## Ports
-
-- UI: http://localhost:31010
-- API: http://localhost:41010
-- Mock apps:
-  - Basic: http://localhost:51010
-  - CSRF: http://localhost:51011
-  - MFA: http://localhost:51012
-  - Lockout: http://localhost:51013
-  - Session Fixation: http://localhost:51014
-  - Password Policy: http://localhost:51015
-  - Rate Limiting: http://localhost:51016
-  - Account Enumeration: http://localhost:51017
-
-## Run
-```bash
-docker compose up --build
 ```
-Open UI and run tests.
+├── services/
+│   ├── api/              # REST API for test management
+│   ├── frontend/         # User interface for test execution
+│   ├── runner/           # Selenium test execution engine
+│   └── mock-apps/        # Multiple authentication scenarios
+├── artifacts/            # Test results and screenshots
+├── docs/                 # Documentation
+└── README.md
+```
 
-Artifacts are served via the API at `/artifacts/...`
+## 🏗️ Architecture
+
+The framework consists of multiple interconnected services:
+
+- **API Service**: Manages test runs and serves artifacts
+- **Frontend Service**: Provides intuitive UI for running and viewing tests
+- **Runner Service**: Executes test suites using Selenium WebDriver
+- **Mock Applications**: Multiple authentication scenarios for testing
+
+## 🧪 Supported Test Scenarios
+
+- Basic Authentication (username/password)
+- CSRF Protection Validation
+- Multi-Factor Authentication (MFA)
+- Account Lockout Mechanisms
+- Session Fixation Prevention
+- Password Policy Enforcement
+- Rate Limiting Controls
+- Account Enumeration Prevention
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Docker and Docker Compose
+- Git
+
+### Installation & Setup
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+2. Build and start the services:
+```bash
+docker-compose up --build
+```
+
+3. Access the application:
+   - UI: [http://localhost:31010](http://localhost:31010)
+   - API: [http://localhost:41010](http://localhost:41010)
+
+4. Run tests through the UI or API endpoints
+
+## 🔧 Development
+
+For development with hot reloading:
+
+1. Install frontend dependencies:
+```bash
+cd services/frontend
+npm install
+```
+
+2. Run development setup:
+```bash
+docker-compose -f docker-compose.dev.yml up --build
+```
+
+## 📊 Test Results
+
+- **Reports**: Generated in HTML format with detailed execution results
+- **Screenshots**: Automatic capture on test failures for debugging
+- **Artifacts**: Organized storage of test results and evidence
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute to this project.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🐙 Repository Structure
+
+```
+├── .github/                  # GitHub workflows and templates
+├── services/                 # Microservices
+│   ├── api/                  # API service
+│   ├── frontend/             # Frontend service  
+│   ├── runner/               # Test runner service
+│   └── mock-apps/            # Authentication mock apps
+├── docs/                     # Documentation
+├── artifacts/                # Test results (gitignored)
+├── docker-compose.yml        # Production deployment
+├── docker-compose.dev.yml    # Development deployment
+├── README.md                 # This file
+├── DEVELOPMENT.md            # Development guide
+├── PROJECT_DOCUMENTATION.md  # Technical documentation
+├── Future-Improvements.md    # Future roadmap
+└── LICENSE                   # License information
+```
 
 ---
 
-# DTS Test Automation Challenge - Technical Prerequisites and Submission Guidelines
-
-This project was created as part of the Senior Software Developer in Test position application for DTS (Digital Transformation Service). As part of the interview process, this submission demonstrates my technical skills in test automation, framework development, and security testing. The implementation showcases proficiency in programming, test automation frameworks, web application testing, version control, and development environment setup.
-
-Thank you for your interest in the Senior Software Developer in Test position here at HMCTS.  As part of our interview process. We appreciate your time and effort in completing this activity, which will help us assess your technical skills in test automation.
-
-In this technical challenge, we would like you to showcase the following:
-
-Proficiency in Programming 
-Familiarity with Test Automation Frameworks 
-Web Application Testing Proficiency 
-Version Control Skills 
-Development Environment Setup 
-Please keep these requirements in mind as you proceed with the activity. We value your skills and expertise in these areas and look forward to seeing your implementation. 
-
-**Documentation and Submission Guidelines:**
- 
-The deadline for submitting the completed activity will be confirmed by our recruitment department.  
-Package your code and any supporting files in a ZIP file or share a repository link if applicable. 
-Provide clear instructions on how to submit your code, including any specific steps or guidelines. 
-If you have any questions or need further clarification on the technical prerequisites or submission guidelines, please feel free to reach out to us. 
-
-**Interview Preparation:** 
-Be prepared to present your code, explain your design choices, and discuss any challenges you encountered during the interview. 
-Think about potential improvements you would make given additional time to work on the activity. 
-We look forward to receiving your completed Test Automation Framework Activity and discussing your approach during the interview. Best of luck! 
- 
-**Activity: Implement Test Automation Framework Objective:**
-
-Implement a test automation framework for a simple web application of your choice that tests the login functionality. 
-
-Instructions: 
-
-Use any programming language (Java, Python, C#, or JavaScript) and test automation framework of your choice such as Selenium WebDriver, Playwright, Cypress, TestNG, JUnit, NUnit, PyTest, or Jasmine. 
-Create a new test project/repository. 
-Set up the necessary dependencies and configurations for the test framework. 
-Write test cases to automate the login functionality of a web application.  
-The test cases should cover both positive and negative scenarios. 
-Include test data setup and teardown steps as necessary. 
-Utilise appropriate design patterns and best practices for test automation. 
-Implement logging and reporting mechanisms to track test execution and results. 
-Handle any necessary waits, assertions, and exception handling in your tests. 
-Use version control to manage your code changes. 
-Deliverables: 
-
-The source code of the test automation framework. 
-A README file with instructions on how to set up and run the tests. 
-A brief explanation of your design choices and any additional improvements you would make if given more time. 
- 
-During the interview, you will need to showcase your proficiency with this framework, and your coding abilities will be evaluated through a brief live coding exercise. 
-
-The use of AI coding assistants is permitted. However, please ensure the submission represents your own understanding, as you will be required to explain, justify and extend your code during the interview.
+Made with ❤️ for test automation excellence

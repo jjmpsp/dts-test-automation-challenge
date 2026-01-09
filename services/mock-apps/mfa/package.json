@@ -1,10 +1,30 @@
 {
-  "name": "mock-login-mfa",
-  "version": "1.0.0",
+  "name": "@login-lab/mock-mfa",
+  "version": "1.0",
+  "description": "Multi-factor authentication mock application for Login Lab Test Automation Framework",
   "private": true,
   "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "body-parser": "^1.20.2"
-  }
+  },
+  "keywords": [
+    "test-automation",
+    "mock-server",
+    "authentication",
+    "multi-factor-auth"
+  ],
+  "author": "Joel Murphy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjmpsp/login-lab-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjmpsp/login-lab-framework/issues"
+  },
+  "homepage": "https://github.com/jjmpsp/login-lab-framework#readme"
 }

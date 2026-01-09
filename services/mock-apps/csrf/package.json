@@ -1,11 +1,31 @@
 {
-  "name": "mock-login-csrf",
-  "version": "1.0.0",
+  "name": "@login-lab/mock-csrf",
+  "version": "1.0",
+  "description": "CSRF protection mock application for Login Lab Test Automation Framework",
   "private": true,
   "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "body-parser": "^1.20.2",
     "crypto": "^1.0.1"
-  }
+  },
+  "keywords": [
+    "test-automation",
+    "mock-server",
+    "authentication",
+    "csrf-protection"
+  ],
+ "author": "Joel Murphy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjmpsp/login-lab-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjmpsp/login-lab-framework/issues"
+  },
+  "homepage": "https://github.com/jjmpsp/login-lab-framework#readme"
 }

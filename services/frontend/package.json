@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
-  "version": "1.0",
-  "description": "Frontend for Login Lab test runner",
+  "name": "@login-lab/frontend",
+  "version": "1.0.0",
+  "description": "User interface for the Login Lab Test Automation Framework",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -17,7 +17,23 @@
   "devDependencies": {
     "vite": "^4.5"
   },
-  "keywords": ["test", "automation", "frontend"],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "test-automation",
+    "selenium",
+    "mocha",
+    "ui-testing",
+    "authentication",
+    "security-testing",
+    "webdriver"
+  ],
+  "author": "Joel Murphy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjmpsp/login-lab-framework.git"
+  },
+ "bugs": {
+    "url": "https://github.com/jjmpsp/login-lab-framework/issues"
+  },
+  "homepage": "https://github.com/jjmpsp/login-lab-framework#readme"
 }

@@ -1,11 +1,32 @@
 {
-  "name": "login-lab-api",
-  "version": "1.0.0",
+  "name": "@login-lab/api",
+  "version": "1.0",
+  "description": "API service for the Login Lab Test Automation Framework",
   "private": true,
   "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+ },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "uuid": "^9.0.1"
-  }
+  },
+  "keywords": [
+    "test-automation",
+    "api",
+    "test-management",
+    "artifact-serving",
+    "webdriver"
+  ],
+  "author": "Joel Murphy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjmpsp/login-lab-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjmpsp/login-lab-framework/issues"
+  },
+  "homepage": "https://github.com/jjmpsp/login-lab-framework#readme"
 }

@@ -1,8 +1,12 @@
 {
-  "name": "login-lab-runner",
-  "version": "1.0.0",
+  "name": "@login-lab/runner",
+  "version": "1.0",
+  "description": "Test execution engine for the Login Lab Test Automation Framework",
   "private": true,
   "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js"
+  },
   "dependencies": {
     "chai": "^4.4.1",
     "express": "^4.19.2",
@@ -12,5 +16,23 @@
     "node-fetch": "^3.3.2",
     "selenium-webdriver": "^4.23.0",
     "winston": "^3.14.2"
-  }
+  },
+  "keywords": [
+    "test-automation",
+    "selenium",
+    "mocha",
+    "webdriver",
+    "test-execution",
+    "reporting"
+  ],
+  "author": "Joel Murphy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/login-lab-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/login-lab-framework/issues"
+  },
+  "homepage": "https://github.com/username/login-lab-framework#readme"
 }
