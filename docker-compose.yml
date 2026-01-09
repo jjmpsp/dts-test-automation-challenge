@@ -1,0 +1,101 @@
+services:
+  api:
+    build: ./services/api
+    ports:
+      - "41010:41010"
+    environment:
+      PORT: "41010"
+      RUNNER_URL: "http://runner:42010"
+      ARTIFACTS_DIR: "/artifacts"
+    volumes:
+      - ./artifacts:/artifacts
+    depends_on:
+      - runner
+
+  frontend:
+    build: ./services/frontend
+    ports:
+      - "31010:31010"
+    environment:
+      PORT: "31010"
+      API_BASE_URL: "http://api:41010"  # Changed to use service name
+    depends_on:
+      - api
+    volumes:
+      - ./services/frontend/public:/app/public  # Add volume for live reload
+
+  runner:
+    build: ./services/runner
+    environment:
+      PORT: "42010"
+      API_BASE_URL: "http://api:41010"
+      HEADLESS: "true"
+      LOG_LEVEL: "info"
+      ARTIFACTS_DIR: "/artifacts"
+    volumes:
+      - ./artifacts:/artifacts
+    depends_on:
+      - mock-app-basic
+      - mock-app-csrf
+      - mock-app-mfa
+      - mock-app-lockout
+      - mock-app-session-fixation
+      - mock-app-password-policy
+      - mock-app-rate-limiting
+      - mock-app-account-enumeration
+
+  mock-app-basic:
+    build: ./services/mock-apps/basic
+    ports:
+      - "51010:51010"
+    environment:
+      PORT: "51010"
+
+  mock-app-csrf:
+    build: ./services/mock-apps/csrf
+    ports:
+      - "51011:51011"
+    environment:
+      PORT: "51011"
+
+  mock-app-mfa:
+    build: ./services/mock-apps/mfa
+    ports:
+      - "51012:51012"
+    environment:
+      PORT: "51012"
+
+  mock-app-lockout:
+    build: ./services/mock-apps/lockout
+    ports:
+      - "51013:51013"
+    environment:
+      PORT: "51013"
+
+  mock-app-session-fixation:
+    build: ./services/mock-apps/session-fixation
+    ports:
+      - "51014:51014"
+    environment:
+      PORT: "51014"
+
+  mock-app-password-policy:
+    build: ./services/mock-apps/password-policy
+    ports:
+      - "51015:51015"
+    environment:
+      PORT: "51015"
+
+  mock-app-rate-limiting:
+    build: ./services/mock-apps/rate-limiting
+    ports:
+      - "51016:51016"
+    environment:
+      PORT: "51016"
+
+  mock-app-account-enumeration:
+    build: ./services/mock-apps/account-enumeration
+    ports:
+      - "51017:51017"
+    environment:
+      PORT: "51017"

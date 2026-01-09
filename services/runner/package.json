@@ -1,0 +1,16 @@
+{
+  "name": "login-lab-runner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "chai": "^4.4.1",
+    "express": "^4.19.2",
+    "mocha": "^10.7.3",
+    "mochawesome": "^7.1.3",
+    "mochawesome-report-generator": "^6.2.0",
+    "node-fetch": "^3.3.2",
+    "selenium-webdriver": "^4.23.0",
+    "winston": "^3.14.2"
+  }
+}

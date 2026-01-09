@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+   <title>Login Lab - Test Runner</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <script>
+     tailwind.config = {
+       theme: {
+         extend: {
+           colors: {
+             custom: {
+               bg: 'var(--bg)',
+               card: 'var(--card)',
+               text: 'var(--text)',
+               muted: 'var(--muted)',
+               border: 'var(--border)',
+               accent: 'var(--accent)'
+             }
+           }
+         }
+       }
+     }
+   </script>
+   <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="m-5 font-sans bg-custom-bg text-custom-text">
+   <header class="mb-3.5">
+     <h1 class="m-0 mb-1.5">Login Lab</h1>
+     <p class="text-custom-muted m-0 mt-1.5">Select scenarios and tests, run all, view reports and screenshots, diff runs, export JSON/CSV.</p>
+   </header>
+
+  <section class="card bg-custom-card border border-custom-border rounded-xl p-3 mb-4">
+    <div class="flex gap-2.5 flex-wrap items-end">
+      <label class="flex flex-col gap-1.5 text-xs text-custom-muted min-w-[120px]">
+        Scenario
+        <select id="scenarioSelect" class="p-2 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text min-w-[170px]"></select>
+      </label>
+
+      <label class="flex flex-col gap-1.5 text-xs text-custom-muted min-w-[120px]">
+        Status
+        <select id="statusFilter" class="p-2 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text min-w-[170px]">
+          <option value="">All</option>
+          <option value="pass">pass</option>
+          <option value="fail">fail</option>
+          <option value="queued">queued</option>
+          <option value="running">running</option>
+        </select>
+      </label>
+
+      <label class="flex flex-col gap-1.5 text-xs text-custom-muted min-w-[120px]">
+        Type
+        <select id="typeFilter" class="p-2 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text min-w-[170px]">
+          <option value="">All</option>
+        </select>
+      </label>
+
+
+      <button id="refresh" class="py-2 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Refresh</button>
+      <button id="runAllBtn" class="py-2 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Run all</button>
+      <button id="runSelectedBtn" class="py-2 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Run selected</button>
+      <button id="exportJson" class="py-2 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Export JSON</button>
+      <button id="exportCsv" class="py-2 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Export CSV</button>
+      <button id="deleteAllBtn" class="py-2 px-3 border border-custom-border rounded-lg bg-[#3a0c10] text-custom-text cursor-pointer hover:bg-[#4a0e15] hover:border-[#ff6b6b]">Delete all runs</button>
+    </div>
+
+    <div class="flex gap-2.5 flex-wrap mt-2.5">
+      <div class="w-full border border-dashed border-custom-border rounded-xl p-2.5 bg-[rgba(14,20,32,0.35)]">
+        <div class="flex gap-2.5 flex-wrap items-center">
+          <strong class="text-custom-text">Tests</strong>
+          <span class="text-custom-muted text-sm">(tick some tests or click Run all)</span>
+          <button id="selectAll" class="py-1.5 px-2.5 text-xs border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Select all</button>
+          <button id="selectNone" class="py-1.5 px-2.5 text-xs border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Select none</button>
+        </div>
+        <div id="testsList" class="testsList mt-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-3">
+    <div class="card bg-custom-card border border-custom-border rounded-xl p-3">
+      <h2 class="text-lg font-semibold mb-0">Runs</h2>
+      <div class="flex gap-2.5 flex-wrap">
+        <label class="flex flex-col gap-1.5 text-xs text-custom-muted min-w-[120px]">
+          Compare A (run id)
+          <input id="diffA" placeholder="e.g. 12" class="p-2 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text min-w-[170px]" />
+        </label>
+        <label class="flex flex-col gap-1.5 text-xs text-custom-muted min-w-[120px]">
+          Compare B (run id)
+          <input id="diffB" placeholder="e.g. 13" class="p-2 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text min-w-[170px]" />
+        </label>
+        <button id="diffBtn" class="py-2 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent">Diff</button>
+      </div>
+      <table id="runsTable" class="w-full border-collapse text-sm">
+        <thead>
+          <tr>
+            <th class="py-2 px-2 border-b border-custom-border">ID</th>
+            <th class="py-2 px-2 border-b border-custom-border">Scenario</th>
+            <th class="py-2 px-2 border-b border-custom-border">Type</th>
+            <th class="py-2 px-2 border-b border-custom-border">Status</th>
+            <th class="py-2 px-2 border-b border-custom-border">Tests</th>
+            <th class="py-2 px-2 border-b border-custom-border">Duration</th>
+            <th class="py-2 px-2 border-b border-custom-border">Started</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination-controls flex justify-between items-center mt-2.5">
+        <div class="flex items-center space-x-2">
+          <button id="prevPage" disabled class="py-1.5 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent disabled:opacity-50 disabled:cursor-not-allowed">&lt; Previous</button>
+          <span id="pageInfo" class="mx-2.5">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
+          <button id="nextPage" disabled class="py-1.5 px-3 border border-custom-border rounded-lg bg-[#0e1420] text-custom-text cursor-pointer hover:border-custom-accent disabled:opacity-50 disabled:cursor-not-allowed">Next &gt;</button>
+        </div>
+        <div>
+          <span class="text-sm">Items per page: 5</span>
+        </div>
+      </div>
+      <p class="text-custom-muted text-sm mt-0">Tip: click a row to populate Compare A/B.</p>
+    </div>
+
+    <div class="card bg-custom-card border border-custom-border rounded-xl p-3">
+      <h2 class="text-lg font-semibold mb-0">Details</h2>
+      <div id="detailsMeta" class="flex flex-col gap-1.5 mb-2"></div>
+      <div id="screenshots" class="shots"></div>
+      <pre id="out" class="max-h-[45vh] overflow-auto bg-[#0e1420] border border-custom-border rounded-lg p-2.5"></pre>
+    </div>
+  </section>
+
+  <script src="/config.js"></script>
+  <script type="module" src="app.js"></script>
+  
+  <!-- Gallery Modal -->
+  <div id="galleryModal" class="gallery-modal">
+    <span id="galleryClose" class="gallery-close">&times;</span>
+    <div class="gallery-content">
+      <img id="galleryImage" class="gallery-image" src="" alt="">
+      <p id="galleryDescription" class="gallery-description"></p>
+      <a id="galleryPrev" class="gallery-nav gallery-prev">&#10094;</a>
+      <a id="galleryNext" class="gallery-nav gallery-next">&#10095;</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "mock-login-csrf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.19.2",
+    "body-parser": "^1.20.2",
+    "crypto": "^1.0.1"
+  }
+}

@@ -1,0 +1,133 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./services/api
+    ports:
+      - "41010:41010"
+    environment:
+      - PORT=41010
+      - RUNNER_URL=http://runner:42010
+      - ARTIFACTS_DIR=/artifacts
+    volumes:
+      - ./artifacts:/artifacts
+    networks:
+      - testlab
+
+  frontend:
+    build:
+      context: ./services/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "31010:31010"
+    environment:
+      - PORT=31010
+      - API_BASE_URL=http://api:41010
+    depends_on:
+      - api
+    volumes:
+      - ./services/frontend/public:/app/public
+      - ./services/frontend/src:/app/src
+      - ./services/frontend/vite.config.js:/app/vite.config.js
+      - ./services/frontend/package.json:/app/package.json
+      - /app/node_modules  # Don't override node_modules
+    command: ["npm", "run", "dev"]  # Use dev command for live reload
+    networks:
+      - testlab
+
+  runner:
+    build: ./services/runner
+    environment:
+      - PORT=42010
+      - API_BASE_URL=http://api:41010
+      - HEADLESS=true
+      - LOG_LEVEL=info
+      - ARTIFACTS_DIR=/artifacts
+    volumes:
+      - ./artifacts:/artifacts
+    depends_on:
+      - mock-app-basic
+      - mock-app-csrf
+      - mock-app-mfa
+      - mock-app-lockout
+      - mock-app-session-fixation
+      - mock-app-password-policy
+      - mock-app-rate-limiting
+      - mock-app-account-enumeration
+    networks:
+      - testlab
+
+  mock-app-basic:
+    build: ./services/mock-apps/basic
+    ports:
+      - "51010:51010"
+    environment:
+      - PORT=51010
+    networks:
+      - testlab
+
+  mock-app-csrf:
+    build: ./services/mock-apps/csrf
+    ports:
+      - "51011:51011"
+    environment:
+      - PORT=51011
+    networks:
+      - testlab
+
+  mock-app-mfa:
+    build: ./services/mock-apps/mfa
+    ports:
+      - "51012:51012"
+    environment:
+      - PORT=51012
+    networks:
+      - testlab
+
+  mock-app-lockout:
+    build: ./services/mock-apps/lockout
+    ports:
+      - "51013:51013"
+    environment:
+      - PORT=51013
+    networks:
+      - testlab
+
+  mock-app-session-fixation:
+    build: ./services/mock-apps/session-fixation
+    ports:
+      - "51014:51014"
+    environment:
+      - PORT=51014
+    networks:
+      - testlab
+
+  mock-app-password-policy:
+    build: ./services/mock-apps/password-policy
+    ports:
+      - "51015:51015"
+    environment:
+      - PORT=51015
+    networks:
+      - testlab
+
+  mock-app-rate-limiting:
+    build: ./services/mock-apps/rate-limiting
+    ports:
+      - "51016:51016"
+    environment:
+      - PORT=51016
+    networks:
+      - testlab
+
+  mock-app-account-enumeration:
+    build: ./services/mock-apps/account-enumeration
+    ports:
+      - "51017:51017"
+    environment:
+      - PORT=51017
+    networks:
+      - testlab
+
+networks:
+  testlab:
