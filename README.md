@@ -1,4 +1,4 @@
-*All references to personal information have been removed, as per name-blind recruitment policy.*
+*All references to personal information have been removed to satisfy name-blind recruitment policy.*
 
 # Login Lab Test Automation Framework
 
