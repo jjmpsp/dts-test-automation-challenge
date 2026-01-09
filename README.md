@@ -6,6 +6,10 @@ Includes:
 - Mochawesome HTML report generated per run
 - Screenshots captured on failure and shown in UI
 
+![Application Screenshot](images/image.png)
+
+## Ports
+
 ## Ports
 - UI: http://localhost:31010
 - API: http://localhost:41010
